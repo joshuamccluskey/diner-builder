@@ -9,6 +9,12 @@ namespace HW2_Pair
     {
         public static void Main(string[] args)
         {
+            Intro();
+        }
+
+
+        static void Intro ()
+        {
             // Create a list for the menu 
             //Intro
             WriteLine("Welcome to Tina's Palace! There is a long line ahead of us so let’s get started:)\n ");
@@ -25,12 +31,14 @@ namespace HW2_Pair
                 string order2 = Convert.ToString(ReadLine());
                 myStack.Push(order2);
 
+
                 if (order2 == "QUIT")
                     break;
+
             }
 
-            DisplayStack(myStack);
             PrintStack(myStack);
+
 
 
             while (myStack.Count > 0)
@@ -40,42 +48,27 @@ namespace HW2_Pair
 
         }
         //Create method to display contents of stack in reverse
-        public static void PrintStack(Stack<string> s)
+        static void PrintStack(Stack<string> s)
         {
-            // If stack is empty
+            // If stack is empty then return
             if (s.Count == 0)
                 return;
 
-            // Pop the top element
+            string x = s.Peek();
+
+            // Pop the top element of the stack
             s.Pop();
 
-            // Extract top of the stack
-            string x = s.Peek();
-            // Print the current top
-            // of the stack i.e., x
-            Write(x + " ");
-
-            // Proceed to print
-            // remaining stack
+            // Recursively call the function PrintStack
             PrintStack(s);
 
-            // Push the element back
+            // Print the stack element starting
+            // from the bottom
+            Console.Write(x + " ");
+
+            // Push the same element onto the stack
+            // to preserve the order
             s.Push(x);
-        }
-        public static void DisplayStack(Stack<string> s)
-        {
-            // Create another stack
-            Stack<string> s1 = new Stack<string>();
-
-            // Until stack is empty
-            while (s.Count > 0)
-            {
-                s1.Push(s.Peek());
-
-                // Print the element
-                Console.Write(s1.Peek() + " ");
-                s.Pop();
-            }
         }
     }
 }
