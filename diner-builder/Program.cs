@@ -27,7 +27,7 @@ namespace HW2_Pair
             Stack<string> myStack = new Stack<string>();
             myStack.Push("Order " + counter + " : " + order);
             counter++;
-            //
+            //While loop taking extra orders until QUIT is entered pushes into stack
             while (order != "QUIT")
             {
                 WriteLine("Next! What would you like? \t");
@@ -43,8 +43,8 @@ namespace HW2_Pair
 
             PrintStack(myStack);
 
-
-            Console.WriteLine();
+            // This pops our stack to show the reverse order
+            Console.WriteLine("Reverse Order");
             while (myStack.Count > 0)
             {
                 Write(myStack.Pop().ToString());
@@ -53,6 +53,7 @@ namespace HW2_Pair
         }
 
         //Create method to display contents of stack in reverse
+        //Credit: https://www.geeksforgeeks.org/print-stack-elements-from-bottom-to-top/
         static void PrintStack(Stack<string> s)
         {
             // If stack is empty then return
