@@ -14,7 +14,9 @@ namespace HW2_Pair
 
 
         static void Intro ()
+
         {
+            int counter = 1;
             // Create a list for the menu 
             //Intro
             WriteLine("Welcome to Tina's Palace! There is a long line ahead of us so let’s get started:)\n ");
@@ -23,30 +25,33 @@ namespace HW2_Pair
 
             // Create a queue to store responses 
             Stack<string> myStack = new Stack<string>();
-            myStack.Push(order);
+            myStack.Push("Order " + counter + " : " + order);
+            counter++;
             //
             while (order != "QUIT")
             {
                 WriteLine("Next! What would you like? \t");
                 string order2 = Convert.ToString(ReadLine());
-                myStack.Push(order2);
-
-
                 if (order2 == "QUIT")
                     break;
+                myStack.Push("Order " + counter + " : "+ order2);
+                counter++;
+
+                
 
             }
 
             PrintStack(myStack);
 
 
-
+            Console.WriteLine();
             while (myStack.Count > 0)
             {
-                WriteLine(myStack.Pop().ToString());
+                Write(myStack.Pop().ToString());
             }
 
         }
+
         //Create method to display contents of stack in reverse
         static void PrintStack(Stack<string> s)
         {
@@ -70,5 +75,12 @@ namespace HW2_Pair
             // to preserve the order
             s.Push(x);
         }
+
+        //Unit Test Pseudocode
+        // Boolean If QUIT = True
+        // Boolean If Not Quit = Flase
+        // Boolean If Stack Created =  True
+        // Boolean If Stack not created = False
+        // Visual Verfication = Print Console
     }
 }
